@@ -49,3 +49,26 @@ in the root lib directory without any specific namespacing, just a Loco2 prefix.
 In a real production project, the nature of the project and the conventions
 for it will determine where this will be stored, and which name it shoud have.
 
+### About exception handling in retrieving the data ###
+
+For simplicity in the challenge purposes, I haven't done any exception handling
+when retrieving the data from disk or parsing the XML.
+
+In real production code that interfaces with external providers, often exception
+handling code to take in account faulty networking, incomplete o malformed data, 
+etc. excedes in LOC the code handling the expected flow.
+
+### About currency
+
+Again for simplicity I'm parsing the price as float. Nowadays, in production code
+I'm wary of any code handling money that does not store the price as integer cents
+to avoid rounding issues, and if possible in some format with the embedded currency
+to ensure 100% of the time that we are not adding/substracting prices in different
+currencies. 
+
+I strongly support the use of [money](https://github.com/Rubymoney/money) or at least
+a simple in-house solution that takes in account the rounding and currency rules.
+
+
+
+
