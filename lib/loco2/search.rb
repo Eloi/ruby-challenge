@@ -23,5 +23,24 @@ module Loco2
       end
     end
 
+    class << self
+
+      def travel_seconds(result)
+        (result[:connections].last[:arrival_at].to_time - result[:connections].first[:departure_at].to_time).to_i
+      end
+
+      def connection_seconds(connection)
+        (connection[:arrival_at].to_time - connection[:departure_at].to_time).to_i
+      end
+
+      def connections_waiting_seconds(connections)
+        seconds = [0]
+        for i in 1..(connections.size-1)
+          seconds << (connections[i][:departure_at].to_time - connections[i-1][:arrival_at].to_time).to_i
+        end
+        seconds
+      end
+
+    end
   end
 end

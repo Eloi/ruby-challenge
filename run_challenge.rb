@@ -1,20 +1,9 @@
 # This file will be the entry point to show the challenge outcome
-puts "Hello World"
-
 
 require_relative 'lib/loco2_route_searcher'
+require_relative 'lib/loco2_search_formatter'
 
 
-searcher = Loco2RouteSearcher.new("./task/search.xml")
+results = Loco2RouteSearcher.new("./task/search.xml").search
 
-
-puts searcher.search.results
-
-require 'pry'
-binding.pry
-
-
-
-
-
-
+puts Loco2SearchFormatter.new(results).format

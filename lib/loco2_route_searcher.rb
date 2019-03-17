@@ -12,9 +12,6 @@ class Loco2RouteSearcher
     results_xml = Nokogiri::XML::Document.parse results_text
     @results = parse_xml_results results_xml
     cast_results
-    tag_cheapest_result
-    tag_quickest_result
-    @results
   end
 
   def results
@@ -59,12 +56,6 @@ class Loco2RouteSearcher
 
   def cast_results
     @results = Loco2::Search.cast @results
-  end
-
-  def tag_cheapest_result
-  end
-
-  def tag_quickest_result
   end
 
 end
