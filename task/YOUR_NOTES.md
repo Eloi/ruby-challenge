@@ -2,6 +2,8 @@
 
 Just run `bundle exec ruby run_challenge.rb` in a terminal.
 
+Run `bundle exec rspec` to run the test suite.
+
 If bundle command is not found, execute `gem install bundler` first.
 
 ## Notes ##
