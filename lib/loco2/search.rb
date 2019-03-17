@@ -41,6 +41,18 @@ module Loco2
         seconds
       end
 
+      def cheapest(results)
+        results[:results].min_by{ |result|
+          result[:connections].sum{ |connection|
+            connection[:fares].min_by{ |fare|
+              fare[:price]}[:price]
+          }
+        }
+      end
+
+      def quickest(results)
+        results[:results].min_by{ |result| travel_seconds result}
+      end
     end
   end
 end

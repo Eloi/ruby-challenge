@@ -78,4 +78,14 @@ describe Loco2::Search do
     expect{ Loco2::Search.cast results_hash }.not_to raise_error
   end
 
+  it "cheapest result must be D42GVV" do
+    results = Loco2::Search.cast results_hash
+    expect( Loco2::Search.cheapest(results)[:id] ).to eq "D42GVV"
+  end
+
+  it "quickest result must be L2FSF4" do
+    results = Loco2::Search.cast results_hash
+    expect( Loco2::Search.quickest(results)[:id] ).to eq "L2FSF4"
+  end
+
 end
