@@ -1,5 +1,5 @@
 class Loco2RouteSearcher
-  require 'loco2/search'
+  require_relative './loco2/search'
 
   def initialize(file_path)
     @file_path = file_path
@@ -30,4 +30,3 @@ class Loco2RouteSearcher
   end
 
 end
-

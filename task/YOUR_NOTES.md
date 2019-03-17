@@ -1,6 +1,6 @@
 ## How to run the challenge ##
 
-Just run `bundle exec run_challenge.rb` in a terminal.
+Just run `bundle exec ruby run_challenge.rb` in a terminal.
 
 If bundle command is not found, execute `gem install bundler` first.
 
