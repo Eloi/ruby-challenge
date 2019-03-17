@@ -1,5 +1,6 @@
 module Loco2
   require 'hashcast'
+  require 'time'
 
   class Search
     include HashCast::Caster

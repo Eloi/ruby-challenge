@@ -1,6 +1,5 @@
 # coding: utf-8
 require 'rspec'
-require 'time'
 require_relative '../lib/loco2/search'
 
 describe Loco2::Search do
