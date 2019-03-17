@@ -1,8 +1,3 @@
-Write any notes you want to make here. For example, you might want to
-tell us how to install any dependencies and run the program you've
-written.
-
-
 ## How to run the challenge ##
 
 Just run `bundle exec run_challenge.rb` in a terminal.
@@ -42,3 +37,15 @@ that has been on my radar for some time but hadn't had the time to play with it.
 Its pretty basic but the resulting code is very readable, let's see if its
 featureful enough to fulfill all the requirements of the challenge or
 If I will need to change it later to another gem or custom solution.
+
+### About parser / presenter naming ###
+
+I've done some thought about which naming and layout convention use for the
+parser and presentation code. Gemspec style? Rails-like?
+
+Finally I've decided against any overengineering, and just dropped the files
+in the root lib directory without any specific namespacing, just a Loco2 prefix.
+
+In a real production project, the nature of the project and the conventions
+for it will determine where this will be stored, and which name it shoud have.
+
