@@ -4,17 +4,17 @@ class Loco2RouteSearcher
 
   def initialize(file_path)
     @file_path = file_path
-    @results_hash = nil
     @results = nil
   end
 
   def search
     results_text = File.readlines(@file_path).join
     results_xml = Nokogiri::XML::Document.parse results_text
-    @results_hash = parse_xml_results results_xml
+    @results = parse_xml_results results_xml
+    cast_results
     tag_cheapest_result
     tag_quickest_result
-    cast_results
+    @results
   end
 
   def results
@@ -24,12 +24,14 @@ class Loco2RouteSearcher
   private
 
   def parse_xml_results(doc)
-    doc.xpath('/SearchResults/SearchResult').map do |node|
-      {
-        id: node.xpath('ID').text,
-        connections: parse_xml_result_connections(node)
+    {
+      results: doc.xpath('/SearchResults/SearchResult').map{ |node|
+        {
+          id: node.xpath('ID').text,
+          connections: parse_xml_result_connections(node)
+        }
       }
-    end
+    }
   end
 
   def parse_xml_result_connections(result_node)
@@ -55,14 +57,14 @@ class Loco2RouteSearcher
     end
   end
 
+  def cast_results
+    @results = Loco2::Search.cast @results
+  end
+
   def tag_cheapest_result
   end
 
   def tag_quickest_result
-  end
-
-  def cast_results
-    @results = Loco2::Search.cast @results_hash
   end
 
 end

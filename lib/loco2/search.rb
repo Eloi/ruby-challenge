@@ -5,15 +5,15 @@ module Loco2
     include HashCast::Caster
 
     attributes do
-      hash :results do
+      array :results, each: :hash do
         string :id
-        hash :connections do
+        array :connections, each: :hash do
           string :departure
-          time :departure_at
+          datetime :departure_at
           string :arrival
-          time :arrival_at
+          datetime :arrival_at
           string :transport_name
-          hash :fares do
+          array :fares, each: :hash do
             string :name
             float :price
             string :currency
