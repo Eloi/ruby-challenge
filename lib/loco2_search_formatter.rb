@@ -4,6 +4,8 @@ class Loco2SearchFormatter
   def initialize(results, format: :records)
     @results = results
     @format = format
+    @cheapest = Loco2::Search.cheapest(results)
+    @quickest = Loco2::Search.quickest(results)
   end
 
 
@@ -41,6 +43,8 @@ class Loco2SearchFormatter
       " | Identifier #{result[:id]}",
       " | Travel Time #{travel_time result}",
       " | #{result[:connections].size-1} train change/s",
+      (result == @cheapest ? " | CHEAPEST!" : ""),
+      (result == @quickest ? " | QUICKEST!" : ""),
       ' | -------------',
     ].join
   end
